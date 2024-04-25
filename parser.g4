@@ -8,8 +8,7 @@ classDeclaration : (PRIVATE | PUBLIC)? CLASS IDENTIFIER LBRACE classBody RBRACE;
 
 classBody : (methodDefinition | fieldDefinition)*;
 
-methodDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | VOID) IDENTIFIER 
-LPAREN parametersDefinition RPAREN LBRACE statements RBRACE;
+methodDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | VOID) IDENTIFIER LPAREN parametersDefinition RPAREN LBRACE statements RBRACE;
 
 parameters : (expression (COMMA expression)*)?;
 
@@ -17,11 +16,9 @@ parametersDefinition : (oneParameterDefinition (COMMA oneParameterDefinition)*)?
 
 oneParameterDefinition: (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER;
 
-fieldDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER 
-(ASSIGN expression SEMICOLON)?;
+fieldDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression SEMICOLON)?;
 
-variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) 
-IDENTIFIER (ASSIGN expression)? SEMICOLON?;
+variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? SEMICOLON?;
 
 methodCalling : IDENTIFIER LPAREN parameters RPAREN SEMICOLON;
 
@@ -29,8 +26,7 @@ statements : (statement)*;
 
 statement : (ifStatement | assignmentStatement | variableDefinition | methodCalling);
 
-ifStatement : IF LPAREN expression RPAREN LBRACE statements RBRACE 
-(ELSE LBRACE statements RBRACE)?;
+ifStatement : IF LPAREN expression RPAREN LBRACE statements RBRACE (ELSE LBRACE statements RBRACE)?;
 
 assignmentStatement : IDENTIFIER ASSIGN expression SEMICOLON;
 
