@@ -92,8 +92,9 @@ additiveExpression : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpr
 
 multiplicativeExpression : primaryExpression ((MULT | DIV) primaryExpression)*;
 
-logicalExpression : expression (LESS | EQUAL | GREATHER) expression;   
+logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
+
+oneLogicalExpression : expression (LESS | EQUAL | GREATHER) expression;
 
 primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | IDENTIFIER );
-
 ```
