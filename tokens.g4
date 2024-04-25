@@ -30,6 +30,8 @@ VOID            : 'void';
 STRING          : '"' (~["\\\r\n])* '"';
 STRING_TOKEN    : 'string'; 
 IDENTIFIER      : [a-zA-Z] [a-zA-Z_0-9]*;
+DOT : '.';
+
 
 
 WHITESPACE : [ \t\n\r\f]+ -> skip ;
