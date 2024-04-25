@@ -1,7 +1,5 @@
 # Konwerter-Java-Python-Babilon
 
-## Babilon
-
 ## Opis projektu: 
 Projekt polega na stworzeniu prostego narzędzia do konwersji kodu z języka Java na język Python, obejmującego analizę składniową kodu Java i generowanie odpowiedniego kodu Pythona.
 
