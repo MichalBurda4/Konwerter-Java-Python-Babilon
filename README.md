@@ -8,5 +8,5 @@ Projekt polega na stworzeniu prostego narzędzia do konwersji kodu z języka Jav
 * Radosław Barszczak
 
 ## Kontakt: 📞
-michalburda@student.agh.edu.pl
-rbarszczak@student.agh.edu.pl
+* michalburda@student.agh.edu.pl
+* rbarszczak@student.agh.edu.pl
