@@ -8,6 +8,8 @@ IF              : 'if';
 ELSE            : 'else';
 OR              : '||';
 AND             : '&&';
+LESS            : '<';
+GREATHER        : '>';
 LPAREN          : '(';
 RPAREN          : ')';
 LBRACE          : '{';
