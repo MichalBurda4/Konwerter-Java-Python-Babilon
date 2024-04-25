@@ -6,6 +6,8 @@ PUBLIC          : 'public';
 PRIVATE         : 'private';
 IF              : 'if';
 ELSE            : 'else';
+OR              : '||';
+AND             : '&&';
 LPAREN          : '(';
 RPAREN          : ')';
 LBRACE          : '{';
