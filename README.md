@@ -78,7 +78,7 @@ statements : (statement)*;
 
 statement : (ifStatement | assignmentStatement | variableDefinition | methodCalling);
 
-ifStatement : IF LPAREN expression RPAREN LBRACE statements RBRACE (ELSE LBRACE statements RBRACE)?;
+ifStatement : IF LPAREN logicalExpression RPAREN LBRACE statements RBRACE (ELSE LBRACE statements RBRACE)?;
 
 assignmentStatement : IDENTIFIER ASSIGN expression SEMICOLON;
 
@@ -87,6 +87,8 @@ expression : (additiveExpression | multiplicativeExpression | primaryExpression)
 additiveExpression : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpression)*;
 
 multiplicativeExpression : primaryExpression ((MULT | DIV) primaryExpression)*;
+
+logicalExpression : expression (LESS | EQUAL | GREATHER) expression;   
 
 primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | IDENTIFIER );
 
