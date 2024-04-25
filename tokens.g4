@@ -10,6 +10,7 @@ OR              : '||';
 AND             : '&&';
 LESS            : '<';
 GREATHER        : '>';
+EQUAL           : '==';
 LPAREN          : '(';
 RPAREN          : ')';
 LBRACE          : '{';
