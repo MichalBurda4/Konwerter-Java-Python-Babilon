@@ -1,3 +1,5 @@
+# Opis pliku tokens.g4
+
 #### CLASS
 - Token: CLASS 
 - Znak terminalny: class
