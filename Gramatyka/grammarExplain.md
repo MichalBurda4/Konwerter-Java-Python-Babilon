@@ -2,7 +2,7 @@
 
 ## Parser Rules:
 #### program:
-- Składa się z jednej lub więcej deklaracji klas.
+Składa się z jednej lub więcej deklaracji klas.
 ####  classDeclaration:
 Definicja klasy, która może zaczynać się od PRIVATE lub PUBLIC (opcjonalnie), a następnie zawiera słowo kluczowe class, nazwę klasy (IDENTIFIER), ciało klasy (classBody) między nawiasami klamrowymi.
 ####  classBody:
