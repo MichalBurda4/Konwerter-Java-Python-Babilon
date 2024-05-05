@@ -8,7 +8,7 @@ Token: PUBLIC
 Znak terminalny: public
 Oznacza dostęp publiczny w języku Java.
 
-PRIVATE
+# PRIVATE
 Token: PRIVATE
 Znak terminalny: private
 Oznacza dostęp prywatny w języku Java.
