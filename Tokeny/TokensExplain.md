@@ -1,9 +1,9 @@
-CLASS
+##CLASS
 Token: CLASS
 Znak terminalny: class
 Oznacza deklarację klasy w języku Java.
 
-PUBLIC
+##PUBLIC
 Token: PUBLIC
 Znak terminalny: public
 Oznacza dostęp publiczny w języku Java.
