@@ -11,6 +11,28 @@ ELSE            : 'else';
 RETURN          : 'return';
 BREAK           : 'break';
 WHILE           : 'while';
+ENUM            : 'enum';
+DO              : 'do';
+CONTINUE        : 'continue';
+CASE            : 'case';
+SWITCH          : 'switch';
+PROTECTED       : 'protected;
+STATIC          : 'static';
+FINAL           : 'final';
+ABSTRACT        : 'abstract';
+DEFAULT         : 'default';
+EXTENDS         : 'extends';
+IMPLEMENTS      : 'implements';
+VOLATAILE       : 'volataile';
+THROWS          : 'throws';
+TRY             : 'try';
+CATCH           : 'catch';
+FINALLY         : 'finally';
+NEW             : 'new';
+THIS            : 'this';
+ASSERT          : 'assert';
+IMPORT          : 'import';
+PACKAGE         : 'package';
 
 
 //Operator
@@ -25,6 +47,15 @@ OR              : '||';
 AND             : '&&';
 LESS            : '<';
 GREATHER        : '>';
+MOD             : '%' ;
+GREATER_THAN_OR_EQUAL : '>=' ;
+LESS_THAN_OR_EQUAL : '<=' ;
+LOGICAL_NOT     : '!' ;
+ADD_ASSIGN      : '+=' ;
+SUB_ASSIGN      : '-=' ;
+MUL_ASSIGN      : '*=' ;
+DIV_ASSIGN      : '/=' ;
+MOD_ASSIGN      : '%=' ;
 
 
 //Delimiter
@@ -33,6 +64,13 @@ RPAREN          : ')';
 LBRACE          : '{';
 RBRACE          : '}';
 SEMICOLON       : ';';
+LSQUARE         : '[' ;
+RSQUARE         : ']' ;
+
+
+//incremantation/decrementation 
+INCREMENT       : '++' ;
+DECREMENT       : '--' ;
 
 
 //Comment
@@ -53,14 +91,25 @@ FLOAT_TOKEN     : 'float';
 VOID            : 'void';
 STRING          : '"' (~["\\\r\n])* '"';
 STRING_TOKEN    : 'string'; 
+DOUBLE          : 'double';
+LONG            : 'long';
+SHORT           : 'short';
+BYTE            : 'byte';
+CHAR            : 'char';
+BOOLEAN         : 'boolean';
 
 
 //identifier
 IDENTIFIER      : [a-zA-Z] [a-zA-Z_0-9]*;
 
+//stale logiczne
+TRUE            : 'true';
+FALSE           : 'false';
+NULL            : 'null';
 
 //other tokens
 DOT             : '.';
 COMMA           : ',';
-WHITESPACE : [ \t\n\r\f]+ -> skip ;
-
+TERNARY         : '?' ;
+THE_DOUBLE_COLON : '::' ;
+WHITESPACE      : [ \t\n\r\f]+ -> skip ;
