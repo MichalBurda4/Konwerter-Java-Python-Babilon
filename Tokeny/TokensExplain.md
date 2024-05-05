@@ -1,4 +1,4 @@
-### CLASS
+#### CLASS
 Token: CLASS
 Znak terminalny: class
 Oznacza deklarację klasy w języku Java.
