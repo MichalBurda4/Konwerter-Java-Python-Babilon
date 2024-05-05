@@ -1,1 +1,1 @@
-# Opis  Gramatyki (pliku parser.g4)
+# Opis  Gramatyki (pliku grammar.g4)
