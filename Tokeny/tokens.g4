@@ -101,7 +101,7 @@ CHAR            : 'char';
 BOOLEAN         : 'boolean';
 INTEGERB        : 'Integer';
 DOUBLEB         : 'Double';
-FLOATB          : 'Floay';            
+FLOATB          : 'Float';            
 LONGB           : 'Long';
 SHORTB          : 'Short';
 BYTEB           : 'Byte';
