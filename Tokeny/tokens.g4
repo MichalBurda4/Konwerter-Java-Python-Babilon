@@ -99,6 +99,14 @@ SHORT           : 'short';
 BYTE            : 'byte';
 CHAR            : 'char';
 BOOLEAN         : 'boolean';
+INTEGERB        : 'Integer';
+DOUBLEB         : 'Double';
+FLOATB          : 'Floay';            
+LONGB           : 'Long';
+SHORTB          : 'Short';
+BYTEB           : 'Byte';
+CHARACTERB      : 'Character';
+BOOLEANB        : 'Boolean';
 
 
 //identifier
