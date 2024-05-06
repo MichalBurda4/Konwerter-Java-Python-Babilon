@@ -28,6 +28,7 @@ class tablica{
     protected void print(){
         int[] numbers = new int[5]; 
         ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
         } 
     }
 }
