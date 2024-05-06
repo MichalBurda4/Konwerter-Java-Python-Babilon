@@ -4,11 +4,14 @@ grammar SimplifiedJavaParser;
 // Parser rules
 program : (classDeclaration)+;
 
-classDeclaration : (PRIVATE | PUBLIC)? CLASS IDENTIFIER LBRACE classBody RBRACE;
+//Deklaracja klasy
+classDeclaration : (PRIVATE | PUBLIC | PROTECTED)? CLASS IDENTIFIER LBRACE classBody RBRACE;
 
+//Ciało klasy
 classBody : (methodDefinition | fieldDefinition)* NEWLINE?;
 
-methodDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | VOID) IDENTIFIER LPAREN parametersDefinition RPAREN LBRACE statements RBRACE;
+//Deklaracja metody
+methodDefinition : (PUBLIC | PRIVATE | PROTECTED) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | VOID) IDENTIFIER LPAREN parametersDefinition RPAREN LBRACE statements RBRACE;
 
 parameters : (expression (COMMA expression)*)?;
 
@@ -22,9 +25,9 @@ variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (AS
  
 methodCalling : IDENTIFIER LPAREN parameters RPAREN SEMICOLON;
 
+//Wnętrze metody
 statements : (statement)*;
-
-statement : (ifStatement| forLoopStatement | whileLoopStatement | assignmentStatement | variableDefinition | methodCalling | incrementStatement | decrementStatement);
+statement : (ifStatement| forLoopStatement | whileLoopStatement | assignmentStatement | variableDefinition | methodCalling | incrementStatement | decrementStatement | arrayDefinition | listDefinition);
 
 ifStatement : IF LPAREN logicalExpression RPAREN LBRACE statements RBRACE (ELSE LBRACE statements RBRACE)?;
 
@@ -51,6 +54,10 @@ logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
 oneLogicalExpression : expression (LESS | EQUAL | GREATHER) expression;
 
 primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | IDENTIFIER );
+
+arrayDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE RSQUARE IDENTIFIER (ASSIGN) NEW (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE expression RSQUARE SEMICOLON?; 
+
+listDefinition : IDENTIFIER LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB | BYTEB | CHARACTERB | BOOLEANB) GREATHER IDENTIFIER (ASSIGN) NEW IDENTIFIER LESS GREATHER LPAREN RPAREN SEMICOLON?;
 
 
 
