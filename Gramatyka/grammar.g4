@@ -4,7 +4,8 @@ grammar SimplifiedJavaParser;
 // Parser rules
 program : (classDeclaration)+;
 
-classDeclaration : (PRIVATE | PUBLIC)? CLASS IDENTIFIER LBRACE classBody RBRACE;
+//Deklaracja klasy
+classDeclaration : (PRIVATE | PUBLIC | PROTECTED)? CLASS IDENTIFIER LBRACE classBody RBRACE;
 
 classBody : (methodDefinition | fieldDefinition)*;
 
