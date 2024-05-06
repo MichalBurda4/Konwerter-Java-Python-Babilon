@@ -21,11 +21,13 @@ lexer grammar SimplifiedJavaLexer;
 CLASS           : 'class';
 PUBLIC          : 'public';                                                                                         
 PRIVATE         : 'private';
+PROTECTED       : 'protected';
 IF              : 'if';
 ELSE            : 'else';
 RETURN          : 'return';
 BREAK           : 'break';
 WHILE           : 'while';
+FOR             : 'for';
 ENUM            : 'enum';
 DO              : 'do';
 CONTINUE        : 'continue';
@@ -48,6 +50,7 @@ THIS            : 'this';
 ASSERT          : 'assert';
 IMPORT          : 'import';
 PACKAGE         : 'package';
+ADD             : 'add';
 
 
 //Operator
@@ -112,6 +115,14 @@ SHORT           : 'short';
 BYTE            : 'byte';
 CHAR            : 'char';
 BOOLEAN         : 'boolean';
+INTEGERB        : 'Integer';
+DOUBLEB         : 'Double';
+FLOATB          : 'Float';            
+LONGB           : 'Long';
+SHORTB          : 'Short';
+BYTEB           : 'Byte';
+CHARACTERB      : 'Character';
+BOOLEANB        : 'Boolean';
 
 
 //identifier
