@@ -6,6 +6,7 @@ lexer grammar SimplifiedJavaLexer;
 CLASS           : 'class';
 PUBLIC          : 'public';                                                                                         
 PRIVATE         : 'private';
+PROTECTED       : 'protected';
 IF              : 'if';
 ELSE            : 'else';
 RETURN          : 'return';
