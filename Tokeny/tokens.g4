@@ -11,6 +11,7 @@ ELSE            : 'else';
 RETURN          : 'return';
 BREAK           : 'break';
 WHILE           : 'while';
+FOR             : 'for';
 ENUM            : 'enum';
 DO              : 'do';
 CONTINUE        : 'continue';
