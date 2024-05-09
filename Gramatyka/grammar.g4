@@ -5,7 +5,7 @@ grammar SimplifiedJavaParser;
 program : (classDeclaration)+;
 
 //Deklaracja klasy
-classDeclaration : (PRIVATE | PUBLIC | PROTECTED)? CLASS IDENTIFIER LBRACE classBody RBRACE;
+classDeclaration : (PRIVATE | PUBLIC | PROTECTED)? CLASS IDENTIFIER (EXTENDS IDENTIFIER)? LBRACE classBody RBRACE;
 
 //Ciało klasy
 classBody : (methodDefinition | fieldDefinition)* NEWLINE?;
