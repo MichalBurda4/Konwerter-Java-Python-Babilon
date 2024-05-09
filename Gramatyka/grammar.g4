@@ -27,7 +27,18 @@ methodCalling : IDENTIFIER LPAREN parameters RPAREN SEMICOLON;
 
 //Wnętrze metody
 statements : (statement)*;
-statement : (ifStatement| forLoopStatement | whileLoopStatement | assignmentStatement | variableDefinition | methodCalling | incrementStatement | decrementStatement | arrayDefinition | listDefinition | listAddDefinition);
+statement : (ifStatement
+          | forLoopStatement 
+          | whileLoopStatement 
+          | assignmentStatement 
+          | variableDefinition 
+          | methodCalling 
+          | incrementStatement 
+          | decrementStatement 
+          | arrayDefinition 
+          | listDefinition 
+          | listAddDefinition
+);
 
 //If
 ifStatement : IF LPAREN logicalExpression RPAREN LBRACE statements RBRACE (ELSE LBRACE statements RBRACE)?;
