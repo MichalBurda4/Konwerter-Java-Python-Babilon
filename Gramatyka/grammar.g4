@@ -25,6 +25,7 @@ variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (AS
  
 methodCalling : IDENTIFIER LPAREN parameters RPAREN SEMICOLON;
 
+
 //Wnętrze metody instrukcje
 statements : (statement)*;
 statement : (ifStatement
@@ -39,6 +40,7 @@ statement : (ifStatement
           | listDefinition 
           | listAddDefinition
 );
+
 
 //If
 ifStatement : IF LPAREN logicalExpression RPAREN LBRACE statements RBRACE (ELSE LBRACE statements RBRACE)?;
@@ -66,8 +68,6 @@ logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
 
 oneLogicalExpression : expression (LESS | EQUAL | GREATHER) expression;
 
-primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | IDENTIFIER );
-
 //Tablice
 arrayDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE RSQUARE IDENTIFIER (ASSIGN) NEW (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE expression RSQUARE SEMICOLON?; 
 
@@ -77,5 +77,7 @@ listDefinition : IDENTIFIER LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB |
 //Dodanie elementu do listy
 listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON?;
 
+expression : (additiveExpression | multiplicativeExpression | primaryExpression);
 
+primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | IDENTIFIER );
 
