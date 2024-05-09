@@ -25,7 +25,7 @@ variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (AS
  
 methodCalling : IDENTIFIER LPAREN parameters RPAREN SEMICOLON;
 
-//Wnętrze metody
+//Wnętrze metody instrukcje
 statements : (statement)*;
 statement : (ifStatement
           | forLoopStatement 
