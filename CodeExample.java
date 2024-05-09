@@ -14,13 +14,13 @@ private class test{
 
 class test2{
     private void print(){
-        string wypiszNaEkran = "abc xyz"; 
+        string wypiszNaEkran = "abc"; 
     }
 }
 
 class test3{
     protected void print(){
-        string wypiszNaEkran = "siema jestem marek"; 
+        string wypiszNaEkran = "xyz"; 
     }
 }
 
