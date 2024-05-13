@@ -116,7 +116,17 @@ IDENTIFIER      : [a-zA-Z] [a-zA-Z_0-9]*;
 TRUE            : 'true';
 FALSE           : 'false';
 NULL            : 'null';
+fragment DIGIT
+    :   [0-9]
+    ;
 
+INTEGER_NUMBER
+    :   DIGIT+
+    ;
+
+FLOAT_NUMBER
+    :   DIGIT+.DIGIT+
+    ;
 //other tokens
 DOT             : '.';
 COMMA           : ',';
