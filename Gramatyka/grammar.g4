@@ -42,9 +42,19 @@ statement : (ifStatement
           | listDefinition 
           | listAddDefinition
           | objectCreating
+          | returnStatement
 );
 
-
+//return
+returnStatement : RETURN (expression | literal)? SEMICOLON ;
+//Dane
+literal : INTEGER_NUMBER 
+        | FLOAT_NUMBER 
+        | STRING
+        | TRUE 
+        | FALSE 
+        | NULL 
+        ;
 //If
 ifStatement : IF LPAREN logicalExpression RPAREN LBRACE statements RBRACE (ELSE LBRACE statements RBRACE)?;
 
