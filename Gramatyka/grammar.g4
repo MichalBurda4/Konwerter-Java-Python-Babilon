@@ -46,6 +46,11 @@ statement : (ifStatement
           | breakeStatement
           | continueStatement
 );
+
+
+//dowhile
+doWhileStatement : DO LBRACE statement RBRACE WHILE LPAREN (oneLogicalExpression) RPAREN SEMICOLON ;
+
 //continue 
 continueStatement : CONTINUE SEMICOLON ;
 //brake 
