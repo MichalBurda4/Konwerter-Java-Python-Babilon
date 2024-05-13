@@ -26,6 +26,7 @@ variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (AS
  
 methodCalling : IDENTIFIER LPAREN parameters RPAREN SEMICOLON;
 
+fieldAccesing : IDENTIFIER DOT IDENTIFIER;
 
 //Wnętrze metody instrukcje
 statements : (statement)*;
@@ -76,7 +77,7 @@ arrayDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE 
 listDefinition : IDENTIFIER LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB | BYTEB | CHARACTERB | BOOLEANB) GREATHER IDENTIFIER (ASSIGN) NEW IDENTIFIER LESS GREATHER LPAREN RPAREN SEMICOLON?;
 
 //Dodanie elementu do listy
-listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON?;
+listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON;
 
-primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | IDENTIFIER );
+primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccesing | IDENTIFIER );
 
