@@ -8,6 +8,7 @@ PUBLIC          : 'public';
 PRIVATE         : 'private';
 PROTECTED       : 'protected';
 IF              : 'if';
+DO              : 'do';
 ELSE            : 'else';
 RETURN          : 'return';
 BREAK           : 'break';
