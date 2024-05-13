@@ -32,3 +32,12 @@ class tablica{
         } 
     }
 }
+
+class TestOsiaganiaPola{
+    public void pobierz(int pole1){
+        int a = testPola.myInt;
+    }
+    private void sprawdz(){
+        pobierz(testPola.myInt);
+    }
+}
