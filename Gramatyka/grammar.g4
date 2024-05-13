@@ -45,6 +45,7 @@ statement : (ifStatement
           | returnStatement
           | breakeStatement
           | continueStatement
+          | doWhileStatement
 );
 
 
