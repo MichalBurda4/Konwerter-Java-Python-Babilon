@@ -43,7 +43,11 @@ statement : (ifStatement
           | listAddDefinition
           | objectCreating
           | returnStatement
+          | breakeStatement;
 );
+
+//brake 
+breakStatement : BREAK SEMICOLON ;
 
 //return
 returnStatement : RETURN (expression | literal)? SEMICOLON ;
