@@ -110,6 +110,12 @@ CHARACTERB      : 'Character';
 BOOLEANB        : 'Boolean';
 
 
+//pirnt 
+PRINT : 'System.out.print';
+PRINTLN : 'System.out.println';
+SCANNER : 'Scanner'; 
+NEXT : 'next'; 
+
 //identifier
 IDENTIFIER      : [a-zA-Z] [a-zA-Z_0-9]*;
 
