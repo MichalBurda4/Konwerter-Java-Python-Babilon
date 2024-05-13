@@ -18,7 +18,6 @@ DO              : 'do';
 CONTINUE        : 'continue';
 CASE            : 'case';
 SWITCH          : 'switch';
-PROTECTED       : 'protected;
 STATIC          : 'static';
 FINAL           : 'final';
 ABSTRACT        : 'abstract';
