@@ -1,3 +1,4 @@
+
 grammar SimplifiedJavaParser;
 
 
@@ -76,8 +77,6 @@ listDefinition : IDENTIFIER LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB |
 
 //Dodanie elementu do listy
 listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON?;
-
-expression : (additiveExpression | multiplicativeExpression | primaryExpression);
 
 primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | IDENTIFIER );
 
