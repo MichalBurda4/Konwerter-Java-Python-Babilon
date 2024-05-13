@@ -43,9 +43,11 @@ statement : (ifStatement
           | listAddDefinition
           | objectCreating
           | returnStatement
-          | breakeStatement;
+          | breakeStatement
+          | continueStatement
 );
-
+//continue 
+continueStatement : CONTINUE SEMICOLON ;
 //brake 
 breakStatement : BREAK SEMICOLON ;
 
