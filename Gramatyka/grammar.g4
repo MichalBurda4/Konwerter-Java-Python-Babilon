@@ -46,9 +46,14 @@ statement : (ifStatement
           | breakeStatement
           | continueStatement
           | doWhileStatement
+          | printStatement
 );
 
-
+//print
+//Obsługa lini komend
+printStatement
+    : PRINTLN LPAREN expression RPAREN SEMICOLON
+    ;
 //dowhile
 doWhileStatement : DO LBRACE statement RBRACE WHILE LPAREN (oneLogicalExpression) RPAREN SEMICOLON ;
 
