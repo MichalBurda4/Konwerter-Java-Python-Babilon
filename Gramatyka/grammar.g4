@@ -41,6 +41,7 @@ statement : (ifStatement
           | arrayDefinition 
           | listDefinition 
           | listAddDefinition
+          | objectCreating
 );
 
 
@@ -66,6 +67,8 @@ additiveExpression : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpr
 
 multiplicativeExpression : primaryExpression ((MULT | DIV) primaryExpression)*;
 
+primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccesing | IDENTIFIER );
+
 logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
 
 oneLogicalExpression : expression (LESS | EQUAL | GREATHER) expression;
@@ -79,5 +82,6 @@ listDefinition : IDENTIFIER LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB |
 //Dodanie elementu do listy
 listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON;
 
-primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccesing | IDENTIFIER );
+objectCreating : IDENTIFIER IDENTIFIER (ASSIGN NEW IDENTIFIER LPAREN parameters RPAREN)? SEMICOLON;
+
 
