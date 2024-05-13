@@ -111,6 +111,7 @@ BOOLEANB        : 'Boolean';
 
 
 //pirnt 
+PRINT : 'System.out.print';
 PRINTLN : 'System.out.println';
 SCANNER : 'Scanner'; 
 NEXT : 'next'; 
