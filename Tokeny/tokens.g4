@@ -92,7 +92,7 @@ FLOAT           : [0-9]+ '.' [0-9]*;
 FLOAT_TOKEN     : 'float';
 VOID            : 'void';
 STRING          : '"' (~["\\\r\n])* '"';
-STRING_TOKEN    : 'string'; 
+STRING_TOKEN    : 'String'; 
 DOUBLE          : 'double';
 LONG            : 'long';
 SHORT           : 'short';
