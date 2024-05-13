@@ -12,7 +12,7 @@ classDeclaration : (PRIVATE | PUBLIC | PROTECTED)? CLASS IDENTIFIER (EXTENDS IDE
 classBody : (methodDefinition | fieldDefinition)* NEWLINE?;
 
 //Deklaracja metody
-methodDefinition : (PUBLIC | PRIVATE | PROTECTED) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | VOID) IDENTIFIER LPAREN parametersDefinition RPAREN LBRACE statements RBRACE;
+methodDefinition : (PUBLIC | PRIVATE | PROTECTED) STATIC? (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | VOID) IDENTIFIER LPAREN parametersDefinition RPAREN LBRACE statements RBRACE;
 
 parameters : (expression (COMMA expression)*)?;
 
@@ -87,7 +87,7 @@ primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccesing | 
 
 logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
 
-oneLogicalExpression : expression (LESS | EQUAL | GREATHER) expression;
+oneLogicalExpression : (expression (LESS | EQUAL | GREATHER) expression) | TRUE | FALSE;
 
 //Tablice
 arrayDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE RSQUARE IDENTIFIER (ASSIGN) NEW (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE expression RSQUARE SEMICOLON?; 
