@@ -43,7 +43,7 @@ statement : (ifStatement
           | listAddDefinition
           | objectCreating
           | returnStatement
-          | breakeStatement
+          | breakStatement
           | continueStatement
           | doWhileStatement
           | printStatement
@@ -110,5 +110,4 @@ listDefinition : IDENTIFIER LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB |
 listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON;
 
 objectCreating : IDENTIFIER IDENTIFIER (ASSIGN NEW IDENTIFIER LPAREN parameters RPAREN)? SEMICOLON;
-
 
