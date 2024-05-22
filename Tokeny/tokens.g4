@@ -1,4 +1,4 @@
-lexer grammar SimplifiedJavaLexer;
+lexer grammar java_babilon;
 
 // Tokens
 
