@@ -1,5 +1,5 @@
 
-grammar SimplifiedJavaParser;
+grammar java_babilon;
 
 
 // Parser rules
