@@ -1,12 +1,12 @@
 private class test{
-    private string myString = "abc";
+    private String myString = "abc";
     public int myInt = 4 * 5;
 
     private void run(){
         int x = 0;
         x = myInt;
-        string myString2;
-        string my = myString2;
+        String myString2;
+        String my = myString2;
         x = 5 * myInt;
     }
 }
@@ -14,13 +14,13 @@ private class test{
 
 class test2{
     private void print(){
-        string wypiszNaEkran = "abc"; 
+        String wypiszNaEkran = "abc"; 
     }
 }
 
 class test3{
     protected void print(){
-        string wypiszNaEkran = "xyz"; 
+        String wypiszNaEkran = "xyz"; 
     }
 }
 
