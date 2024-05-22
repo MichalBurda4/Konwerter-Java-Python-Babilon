@@ -47,10 +47,11 @@ ASSIGN          : '=';
 NOT_EQUAL       : '!=';
 OR              : '||';
 AND             : '&&';
-GREATHER        : '>';
 MOD             : '%' ;
-GREATER         : '>=' ;
-LESS            : '<=' ;
+LESS            : '<';
+GREATHER         : '>';
+GREATHER_EQUAL   : '>=' ;
+LESS_EQUAL      : '<=' ;
 LOGICAL_NOT     : '!' ;
 ADD_ASSIGN      : '+=' ;
 SUB_ASSIGN      : '-=' ;
@@ -106,6 +107,7 @@ SHORTB          : 'Short';
 BYTEB           : 'Byte';
 CHARACTERB      : 'Character';
 BOOLEANB        : 'Boolean';
+ARRAY_LIST      : 'ArrayList';
 
 
 //pirnt 
