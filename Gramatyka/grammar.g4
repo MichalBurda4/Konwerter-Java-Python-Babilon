@@ -1,45 +1,40 @@
+parser grammar java_babilon_parser;
 
-grammar java_babilon;
+options { tokenVocab=java_babilon_lexer; }
 
+program : classDeclaration+;
 
-// Parser rules
-program : (classDeclaration)+;
-
-//Deklaracja klasy
 classDeclaration : (PRIVATE | PUBLIC | PROTECTED)? CLASS IDENTIFIER (EXTENDS IDENTIFIER)? LBRACE classBody RBRACE;
 
-//Ciało klasy
 classBody : (methodDefinition | fieldDefinition)* NEWLINE?;
 
-//Deklaracja metody
 methodDefinition : (PUBLIC | PRIVATE | PROTECTED) STATIC? (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | VOID) IDENTIFIER LPAREN parametersDefinition RPAREN LBRACE statements RBRACE;
 
 parameters : (expression (COMMA expression)*)?;
 
-parametersDefinition : (oneParameterDefinition (COMMA oneParameterDefinition)*)?;
+parametersDefinition : (oneParameterDefinition (COMMA oneParameterDefinition)*)?-;
 
 oneParameterDefinition: (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER;
 
 fieldDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression SEMICOLON)?;
 
-variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? SEMICOLON; 
- 
+variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? SEMICOLON;
+
 methodCalling : IDENTIFIER LPAREN parameters RPAREN SEMICOLON;
 
-fieldAccesing : IDENTIFIER DOT IDENTIFIER;
+fieldAccessing : IDENTIFIER (DOT IDENTIFIER)+;
 
-//Wnętrze metody instrukcje
-statements : (statement)*;
+statements : statement*;
 statement : (ifStatement
-          | forLoopStatement 
-          | whileLoopStatement 
-          | assignmentStatement 
-          | variableDefinition 
-          | methodCalling 
-          | incrementStatement 
-          | decrementStatement 
-          | arrayDefinition 
-          | listDefinition 
+          | forLoopStatement
+          | whileLoopStatement
+          | assignmentStatement
+          | variableDefinition
+          | methodCalling
+          | incrementStatement
+          | decrementStatement
+          | arrayDefinition
+          | listDefinition
           | listAddDefinition
           | objectCreating
           | returnStatement
@@ -49,44 +44,36 @@ statement : (ifStatement
           | printStatement
 );
 
-//print
-//Obsługa lini komend
-printStatement
-    : PRINTLN LPAREN expression RPAREN SEMICOLON
-    ;
-//dowhile
-doWhileStatement : DO LBRACE statement RBRACE WHILE LPAREN (oneLogicalExpression) RPAREN SEMICOLON ;
+printStatement : PRINTLN LPAREN expression RPAREN SEMICOLON;
 
-//continue 
-continueStatement : CONTINUE SEMICOLON ;
-//brake 
-breakStatement : BREAK SEMICOLON ;
+doWhileStatement : DO LBRACE statements RBRACE WHILE LPAREN oneLogicalExpression RPAREN SEMICOLON;
 
-//return
-returnStatement : RETURN (expression | literal)? SEMICOLON ;
-//Dane
-literal : INTEGER_NUMBER 
-        | FLOAT_NUMBER 
+continueStatement : CONTINUE SEMICOLON;
+
+breakStatement : BREAK SEMICOLON;
+
+returnStatement : RETURN (expression | literal)? SEMICOLON;
+
+literal : INTEGER
+        | FLOAT
         | STRING
-        | TRUE 
-        | FALSE 
-        | NULL 
-        ;
-//If
+        | TRUE
+        | FALSE
+        | NULL;
+
 ifStatement : IF LPAREN logicalExpression RPAREN LBRACE statements RBRACE (ELSE LBRACE statements RBRACE)?;
 
-//Petla for
-forLoopStatement : (FOR LPAREN  forLoopVariable SEMICOLON oneLogicalExpression SEMICOLON forLoopVariable RPAREN LBRACE statements RBRACE) | (FOR LPAREN SEMICOLON SEMICOLON RPAREN LBRACE statements RBRACE);
-forLoopVariable : ((INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? | IDENTIFIER ASSIGN expression | (IDENTIFIER INCREMENT | INCREMENT IDENTIFIER) | (IDENTIFIER DECREMENT | DECREMENT IDENTIFIER)); 
+forLoopStatement : FOR LPAREN forLoopVariable SEMICOLON oneLogicalExpression SEMICOLON forLoopVariable RPAREN LBRACE statements RBRACE;
 
-//Petla while
+forLoopVariable : ((INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? | IDENTIFIER ASSIGN expression | (IDENTIFIER INCREMENT | INCREMENT IDENTIFIER) | (IDENTIFIER DECREMENT | DECREMENT IDENTIFIER));
+
 whileLoopStatement : WHILE LPAREN oneLogicalExpression RPAREN LBRACE statements RBRACE;
 
 assignmentStatement : IDENTIFIER ASSIGN expression SEMICOLON;
 
-incrementStatement : (IDENTIFIER INCREMENT | INCREMENT IDENTIFIER) SEMICOLON ; 
+incrementStatement : (IDENTIFIER INCREMENT | INCREMENT IDENTIFIER) SEMICOLON;
 
-decrementStatement : (IDENTIFIER DECREMENT | DECREMENT IDENTIFIER) SEMICOLON ; 
+decrementStatement : (IDENTIFIER DECREMENT | DECREMENT IDENTIFIER) SEMICOLON;
 
 expression : (additiveExpression | multiplicativeExpression | primaryExpression);
 
@@ -94,20 +81,16 @@ additiveExpression : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpr
 
 multiplicativeExpression : primaryExpression ((MULT | DIV) primaryExpression)*;
 
-primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccesing | IDENTIFIER );
+primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccessing | IDENTIFIER );
 
 logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
 
-oneLogicalExpression : (expression (LESS | EQUAL | GREATHER) expression) | TRUE | FALSE;
+oneLogicalExpression : (expression (LESS | EQUAL | GREATER | GREATER_EQUAL | LESS_EQUAL) expression) | TRUE | FALSE;
 
-//Tablice
-arrayDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE RSQUARE IDENTIFIER (ASSIGN) NEW (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE expression RSQUARE SEMICOLON?; 
+arrayDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE RSQUARE IDENTIFIER (ASSIGN) NEW (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE expression RSQUARE SEMICOLON?;
 
-//Listy
-listDefinition : ARRAY_LIST LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB | BYTEB | CHARACTERB | BOOLEANB) GREATHER IDENTIFIER (ASSIGN NEW ARRAY_LIST LESS GREATHER LPAREN RPAREN)? SEMICOLON;
+listDefinition : ARRAY_LIST LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB | BYTEB | CHARACTERB | BOOLEANB) GREATER IDENTIFIER (ASSIGN NEW ARRAY_LIST LESS GREATER LPAREN RPAREN)? SEMICOLON;
 
-//Dodanie elementu do listy
 listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON;
 
 objectCreating : IDENTIFIER IDENTIFIER (ASSIGN NEW IDENTIFIER LPAREN parameters RPAREN)? SEMICOLON;
-
