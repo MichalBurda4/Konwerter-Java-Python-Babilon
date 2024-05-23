@@ -215,6 +215,11 @@ listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON?;
 
 ## Drzewo tokenów:
 ![image](https://github.com/MichalBurda4/Konwerter-Java-Python-Babilon/assets/163707785/0c8c640b-a850-499c-8b69-e09d02b06aee)
+![image](https://github.com/MichalBurda4/Konwerter-Java-Python-Babilon/assets/163707785/2a0754d3-f25d-48b7-b0c2-0c7f54b16f80)
+![image](https://github.com/MichalBurda4/Konwerter-Java-Python-Babilon/assets/163707785/d36004c1-75ac-4dfe-96b0-fd3fa84d5e95)
+
+
+
 
 
 
