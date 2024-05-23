@@ -6,13 +6,15 @@ program : classDeclaration+;
 
 classDeclaration : (PRIVATE | PUBLIC | PROTECTED)? CLASS IDENTIFIER (EXTENDS IDENTIFIER)? LBRACE classBody RBRACE;
 
-classBody : (methodDefinition | fieldDefinition)* NEWLINE?;
+classBody : (mainMethod | methodDefinition | fieldDefinition)* NEWLINE?;
+
+mainMethod : PUBLIC STATIC VOID MAIN LPAREN STRING_TOKEN LSQUARE RSQUARE IDENTIFIER RPAREN LBRACE statements RBRACE;
 
 methodDefinition : (PUBLIC | PRIVATE | PROTECTED) STATIC? (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | VOID) IDENTIFIER LPAREN parametersDefinition RPAREN LBRACE statements RBRACE;
 
 parameters : (expression (COMMA expression)*)?;
 
-parametersDefinition : (oneParameterDefinition (COMMA oneParameterDefinition)*)?-;
+parametersDefinition : (oneParameterDefinition (COMMA oneParameterDefinition)*)?;
 
 oneParameterDefinition: (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER;
 
