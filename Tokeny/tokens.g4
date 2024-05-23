@@ -1,142 +1,96 @@
-lexer grammar java_babilon;
+parser grammar java_babilon_parser;
 
-// Tokens
+options { tokenVocab=java_babilon_lexer; }
 
-//Keyword
-CLASS           : 'class';
-PUBLIC          : 'public';                                                                                         
-PRIVATE         : 'private';
-PROTECTED       : 'protected';
-IF              : 'if';
-DO              : 'do';
-ELSE            : 'else';
-RETURN          : 'return';
-BREAK           : 'break';
-WHILE           : 'while';
-FOR             : 'for';
-ENUM            : 'enum';
-CONTINUE        : 'continue';
-CASE            : 'case';
-SWITCH          : 'switch';
-STATIC          : 'static';
-FINAL           : 'final';
-ABSTRACT        : 'abstract';
-DEFAULT         : 'default';
-EXTENDS         : 'extends';
-IMPLEMENTS      : 'implements';
-VOLATAILE       : 'volataile';
-THROWS          : 'throws';
-TRY             : 'try';
-CATCH           : 'catch';
-FINALLY         : 'finally';
-NEW             : 'new';
-THIS            : 'this';
-ASSERT          : 'assert';
-IMPORT          : 'import';
-PACKAGE         : 'package';
-ADD             : 'add';
+program : classDeclaration+;
 
+classDeclaration : (PRIVATE | PUBLIC | PROTECTED)? CLASS IDENTIFIER (EXTENDS IDENTIFIER)? LBRACE classBody RBRACE;
 
-//Operator
-PLUS            : '+';
-MINUS           : '-';
-MULT            : '*';
-DIV             : '/';
-EQUAL           : '==';
-ASSIGN          : '=';
-NOT_EQUAL       : '!=';
-OR              : '||';
-AND             : '&&';
-MOD             : '%' ;
-LESS            : '<';
-GREATHER         : '>';
-GREATHER_EQUAL   : '>=' ;
-LESS_EQUAL      : '<=' ;
-LOGICAL_NOT     : '!' ;
-ADD_ASSIGN      : '+=' ;
-SUB_ASSIGN      : '-=' ;
-MUL_ASSIGN      : '*=' ;
-DIV_ASSIGN      : '/=' ;
-MOD_ASSIGN      : '%=' ;
+classBody : (methodDefinition | fieldDefinition)* NEWLINE?;
 
+methodDefinition : (PUBLIC | PRIVATE | PROTECTED) STATIC? (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | VOID) IDENTIFIER LPAREN parametersDefinition RPAREN LBRACE statements RBRACE;
 
-//Delimiter
-LPAREN          : '(';
-RPAREN          : ')';
-LBRACE          : '{';
-RBRACE          : '}';
-SEMICOLON       : ';';
-LSQUARE         : '[' ;
-RSQUARE         : ']' ;
+parameters : (expression (COMMA expression)*)?;
 
+parametersDefinition : (oneParameterDefinition (COMMA oneParameterDefinition)*)?-;
 
-//incremantation/decrementation 
-INCREMENT       : '++' ;
-DECREMENT       : '--' ;
+oneParameterDefinition: (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER;
 
+fieldDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression SEMICOLON)?;
 
-//Comment
-SINGLE_LINE_COMMENT : '//' ~[\r\n]* -> skip;  // Komentarz jednoliniowy
-MULTI_LINE_COMMENT : '/*' .*? '*/' -> skip;    // Komentarz wieloliniowy
+variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? SEMICOLON;
 
+methodCalling : IDENTIFIER LPAREN parameters RPAREN SEMICOLON;
 
-//whitespace characters
-NEWLINE         : '\n';  // Token dla znaku nowej lini
-TAB             : '\t';      // Token dla tabulatora
+fieldAccessing : IDENTIFIER (DOT IDENTIFIER)+;
 
+statements : statement*;
+statement : (ifStatement
+          | forLoopStatement
+          | whileLoopStatement
+          | assignmentStatement
+          | variableDefinition
+          | methodCalling
+          | incrementStatement
+          | decrementStatement
+          | arrayDefinition
+          | listDefinition
+          | listAddDefinition
+          | objectCreating
+          | returnStatement
+          | breakStatement
+          | continueStatement
+          | doWhileStatement
+          | printStatement
+);
 
-//type token
-INTEGER         : '0' | [1-9] [0-9]*;
-INTEGER_TOKEN   : 'int';
-FLOAT           : [0-9]+ '.' [0-9]*;
-FLOAT_TOKEN     : 'float';
-VOID            : 'void';
-STRING          : '"' (~["\\\r\n])* '"';
-STRING_TOKEN    : 'String'; 
-DOUBLE          : 'double';
-LONG            : 'long';
-SHORT           : 'short';
-BYTE            : 'byte';
-CHAR            : 'char';
-BOOLEAN         : 'boolean';
-INTEGERB        : 'Integer';
-DOUBLEB         : 'Double';
-FLOATB          : 'Float';            
-LONGB           : 'Long';
-SHORTB          : 'Short';
-BYTEB           : 'Byte';
-CHARACTERB      : 'Character';
-BOOLEANB        : 'Boolean';
-ARRAY_LIST      : 'ArrayList';
+printStatement : PRINTLN LPAREN expression RPAREN SEMICOLON;
 
+doWhileStatement : DO LBRACE statements RBRACE WHILE LPAREN oneLogicalExpression RPAREN SEMICOLON;
 
-//pirnt 
-PRINT : 'System.out.print';
-PRINTLN : 'System.out.println';
-SCANNER : 'Scanner'; 
-NEXT : 'next'; 
+continueStatement : CONTINUE SEMICOLON;
 
-//identifier
-IDENTIFIER      : [a-zA-Z] [a-zA-Z_0-9]*;
+breakStatement : BREAK SEMICOLON;
 
-//stale logiczne
-TRUE            : 'true';
-FALSE           : 'false';
-NULL            : 'null';
-fragment DIGIT
-    :   [0-9]
-    ;
+returnStatement : RETURN (expression | literal)? SEMICOLON;
 
-INTEGER_NUMBER
-    :   DIGIT+
-    ;
+literal : INTEGER
+        | FLOAT
+        | STRING
+        | TRUE
+        | FALSE
+        | NULL;
 
-FLOAT_NUMBER
-    :   DIGIT+.DIGIT+
-    ;
-//other tokens
-DOT             : '.';
-COMMA           : ',';
-TERNARY         : '?' ;
-THE_DOUBLE_COLON : '::' ;
-WHITESPACE      : [ \t\n\r\f]+ -> skip ;
+ifStatement : IF LPAREN logicalExpression RPAREN LBRACE statements RBRACE (ELSE LBRACE statements RBRACE)?;
+
+forLoopStatement : FOR LPAREN forLoopVariable SEMICOLON oneLogicalExpression SEMICOLON forLoopVariable RPAREN LBRACE statements RBRACE;
+
+forLoopVariable : ((INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? | IDENTIFIER ASSIGN expression | (IDENTIFIER INCREMENT | INCREMENT IDENTIFIER) | (IDENTIFIER DECREMENT | DECREMENT IDENTIFIER));
+
+whileLoopStatement : WHILE LPAREN oneLogicalExpression RPAREN LBRACE statements RBRACE;
+
+assignmentStatement : IDENTIFIER ASSIGN expression SEMICOLON;
+
+incrementStatement : (IDENTIFIER INCREMENT | INCREMENT IDENTIFIER) SEMICOLON;
+
+decrementStatement : (IDENTIFIER DECREMENT | DECREMENT IDENTIFIER) SEMICOLON;
+
+expression : (additiveExpression | multiplicativeExpression | primaryExpression);
+
+additiveExpression : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpression)*;
+
+multiplicativeExpression : primaryExpression ((MULT | DIV) primaryExpression)*;
+
+primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccessing | IDENTIFIER );
+
+logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
+
+oneLogicalExpression : (expression (LESS | EQUAL | GREATER | GREATER_EQUAL | LESS_EQUAL) expression) | TRUE | FALSE;
+
+arrayDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE RSQUARE IDENTIFIER (ASSIGN) NEW (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | DOUBLE) LSQUARE expression RSQUARE SEMICOLON?;
+
+listDefinition : ARRAY_LIST LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB | BYTEB | CHARACTERB | BOOLEANB) GREATER IDENTIFIER (ASSIGN NEW ARRAY_LIST LESS GREATER LPAREN RPAREN)? SEMICOLON;
+
+listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON;
+
+objectCreating : IDENTIFIER IDENTIFIER (ASSIGN NEW IDENTIFIER LPAREN parameters RPAREN)? SEMICOLON;
