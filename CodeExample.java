@@ -41,3 +41,9 @@ class TestOsiaganiaPola{
         pobierz(testPola.myInt);
     }
 }
+
+public class zad14 {
+    public static void main(String[] args) {
+
+    }
+}
