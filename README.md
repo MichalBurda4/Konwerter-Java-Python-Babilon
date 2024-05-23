@@ -13,7 +13,7 @@ Projekt polega na stworzeniu prostego narzędzia do konwersji kodu z języka Jav
 
 ## Tokeny:
 ```
-lexer grammar SimplifiedJavaLexer;
+lexer grammar java_babilon;
 
 // Tokens
 
@@ -23,17 +23,16 @@ PUBLIC          : 'public';
 PRIVATE         : 'private';
 PROTECTED       : 'protected';
 IF              : 'if';
+DO              : 'do';
 ELSE            : 'else';
 RETURN          : 'return';
 BREAK           : 'break';
 WHILE           : 'while';
 FOR             : 'for';
 ENUM            : 'enum';
-DO              : 'do';
 CONTINUE        : 'continue';
 CASE            : 'case';
 SWITCH          : 'switch';
-PROTECTED       : 'protected;
 STATIC          : 'static';
 FINAL           : 'final';
 ABSTRACT        : 'abstract';
@@ -63,11 +62,11 @@ ASSIGN          : '=';
 NOT_EQUAL       : '!=';
 OR              : '||';
 AND             : '&&';
-LESS            : '<';
-GREATHER        : '>';
 MOD             : '%' ;
-GREATER_THAN_OR_EQUAL : '>=' ;
-LESS_THAN_OR_EQUAL : '<=' ;
+LESS            : '<';
+GREATHER         : '>';
+GREATHER_EQUAL   : '>=' ;
+LESS_EQUAL      : '<=' ;
 LOGICAL_NOT     : '!' ;
 ADD_ASSIGN      : '+=' ;
 SUB_ASSIGN      : '-=' ;
@@ -108,7 +107,7 @@ FLOAT           : [0-9]+ '.' [0-9]*;
 FLOAT_TOKEN     : 'float';
 VOID            : 'void';
 STRING          : '"' (~["\\\r\n])* '"';
-STRING_TOKEN    : 'string'; 
+STRING_TOKEN    : 'String'; 
 DOUBLE          : 'double';
 LONG            : 'long';
 SHORT           : 'short';
@@ -123,7 +122,14 @@ SHORTB          : 'Short';
 BYTEB           : 'Byte';
 CHARACTERB      : 'Character';
 BOOLEANB        : 'Boolean';
+ARRAY_LIST      : 'ArrayList';
 
+
+//pirnt 
+PRINT : 'System.out.print';
+PRINTLN : 'System.out.println';
+SCANNER : 'Scanner'; 
+NEXT : 'next'; 
 
 //identifier
 IDENTIFIER      : [a-zA-Z] [a-zA-Z_0-9]*;
@@ -132,7 +138,17 @@ IDENTIFIER      : [a-zA-Z] [a-zA-Z_0-9]*;
 TRUE            : 'true';
 FALSE           : 'false';
 NULL            : 'null';
+fragment DIGIT
+    :   [0-9]
+    ;
 
+INTEGER_NUMBER
+    :   DIGIT+
+    ;
+
+FLOAT_NUMBER
+    :   DIGIT+.DIGIT+
+    ;
 //other tokens
 DOT             : '.';
 COMMA           : ',';
