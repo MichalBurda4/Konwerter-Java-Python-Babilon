@@ -213,11 +213,37 @@ listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON?;
 
 ```
 
-## Drzewo składniowe kodu źródłowego języka Java:
+## Drzewo składniowe kodu źródłowego języka Java 🌳:
 ![image](https://github.com/MichalBurda4/Konwerter-Java-Python-Babilon/assets/163707785/0c8c640b-a850-499c-8b69-e09d02b06aee)
 ![image](https://github.com/MichalBurda4/Konwerter-Java-Python-Babilon/assets/163707785/2a0754d3-f25d-48b7-b0c2-0c7f54b16f80)
 ![image](https://github.com/MichalBurda4/Konwerter-Java-Python-Babilon/assets/163707785/d36004c1-75ac-4dfe-96b0-fd3fa84d5e95)
 
+Podane obrazy przedstawiają drzewo składniowe kodu źródłowego w języku Java. Drzewo składniowe, znane również jako drzewo wyprowadzeń (parse tree), reprezentuje strukturalne części programu i sposób, w jaki są one zagnieżdżone w kodzie.
+
+Prolog:
+
+Program zaczyna się od klasy MainClass z metodą main, która zawiera kilka deklaracji zmiennych i operacji matematycznych.
+Główna struktura to klasa MainClass z metodą main, która zawiera dwie klasy wewnętrzne ChildClass1 i ChildClass2.
+MainClass:
+
+Klasa MainClass zawiera dwie klasy wewnętrzne ChildClass1 i ChildClass2.
+ChildClass1:
+
+Klasa ChildClass1 ma dwie zmienne prywatne a i b, oraz metodę addNumbers.
+ChildClass2:
+
+Klasa ChildClass2 ma jedną zmienną prywatną x oraz metodę subtractNumbers.
+Metoda main:
+
+Metoda main zawiera:
+Deklarację i inicjalizację zmiennej result.
+Tworzenie instancji klas ChildClass1 i ChildClass2.
+Wywołanie metod addNumbers i subtractNumbers na instancjach klas wewnętrznych.
+Metody w ChildClass1 i ChildClass2:
+
+ChildClass1.addNumbers dodaje dwie liczby.
+ChildClass2.subtractNumbers odejmuje dwie liczby.
+Drzewo składniowe szczegółowo przedstawia każdy element kodu, pokazując strukturę kodu źródłowego. Każdy węzeł reprezentuje składniowy element, taki jak deklaracja klasy, metoda, operacja matematyczna, wyrażenie itp. Drzewo rozgałęzia się, pokazując hierarchię i zagnieżdżenie składniowe elementów programu.
 
 
 
