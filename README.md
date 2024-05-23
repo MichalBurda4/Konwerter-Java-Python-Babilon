@@ -213,5 +213,10 @@ listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON?;
 
 ```
 
+## Drzewo tokenów:
+![image](https://github.com/MichalBurda4/Konwerter-Java-Python-Babilon/assets/163707785/0c8c640b-a850-499c-8b69-e09d02b06aee)
+
+
+
 ## Narzędzia z jakich korzystamy:
 Antlr: http://lab.antlr.org/
