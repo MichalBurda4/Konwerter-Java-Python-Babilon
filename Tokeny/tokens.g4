@@ -35,7 +35,7 @@ ASSERT          : 'assert';
 IMPORT          : 'import';
 PACKAGE         : 'package';
 ADD             : 'add';
-
+MAIN            : 'main';
 
 //Operator
 PLUS            : '+';
