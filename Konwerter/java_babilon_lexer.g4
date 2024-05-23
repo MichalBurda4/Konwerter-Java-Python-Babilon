@@ -49,8 +49,8 @@ OR              : '||';
 AND             : '&&';
 MOD             : '%' ;
 LESS            : '<';
-GREATHER         : '>';
-GREATHER_EQUAL   : '>=' ;
+GREATER         : '>';
+GREATER_EQUAL   : '>=' ;
 LESS_EQUAL      : '<=' ;
 LOGICAL_NOT     : '!' ;
 ADD_ASSIGN      : '+=' ;
@@ -123,17 +123,7 @@ IDENTIFIER      : [a-zA-Z] [a-zA-Z_0-9]*;
 TRUE            : 'true';
 FALSE           : 'false';
 NULL            : 'null';
-fragment DIGIT
-    :   [0-9]
-    ;
 
-INTEGER_NUMBER
-    :   DIGIT+
-    ;
-
-FLOAT_NUMBER
-    :   DIGIT+.DIGIT+
-    ;
 //other tokens
 DOT             : '.';
 COMMA           : ',';
