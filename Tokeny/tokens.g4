@@ -104,6 +104,4 @@ NULL            : 'null';
 //other tokens
 DOT             : '.';
 COMMA           : ',';
-TERNARY         : '?' ;
-THE_DOUBLE_COLON : '::' ;
 WHITESPACE      : [ \t\n\r\f]+ -> skip ;
