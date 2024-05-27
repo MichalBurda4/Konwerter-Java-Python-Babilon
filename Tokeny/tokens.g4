@@ -14,26 +14,11 @@ RETURN          : 'return';
 BREAK           : 'break';
 WHILE           : 'while';
 FOR             : 'for';
-ENUM            : 'enum';
 CONTINUE        : 'continue';
-CASE            : 'case';
-SWITCH          : 'switch';
 STATIC          : 'static';
-FINAL           : 'final';
-ABSTRACT        : 'abstract';
-DEFAULT         : 'default';
 EXTENDS         : 'extends';
-IMPLEMENTS      : 'implements';
-VOLATAILE       : 'volataile';
-THROWS          : 'throws';
-TRY             : 'try';
-CATCH           : 'catch';
-FINALLY         : 'finally';
 NEW             : 'new';
-THIS            : 'this';
-ASSERT          : 'assert';
 IMPORT          : 'import';
-PACKAGE         : 'package';
 ADD             : 'add';
 MAIN            : 'main';
 
@@ -74,12 +59,6 @@ RSQUARE         : ']' ;
 INCREMENT       : '++' ;
 DECREMENT       : '--' ;
 
-
-//Comment
-SINGLE_LINE_COMMENT : '//' ~[\r\n]* -> skip;  // Komentarz jednoliniowy
-MULTI_LINE_COMMENT : '/*' .*? '*/' -> skip;    // Komentarz wieloliniowy
-
-
 //whitespace characters
 NEWLINE         : '\n';  // Token dla znaku nowej lini
 TAB             : '\t';      // Token dla tabulatora
@@ -113,8 +92,6 @@ ARRAY_LIST      : 'ArrayList';
 //pirnt 
 PRINT : 'System.out.print';
 PRINTLN : 'System.out.println';
-SCANNER : 'Scanner'; 
-NEXT : 'next'; 
 
 //identifier
 IDENTIFIER      : [a-zA-Z] [a-zA-Z_0-9]*;
