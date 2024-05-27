@@ -2,11 +2,13 @@ parser grammar java_babilon_parser;
 
 options { tokenVocab=java_babilon_lexer; }
 
-program : classDeclaration+;
+program : importStatement* classDeclaration+;
 
 classDeclaration : (PRIVATE | PUBLIC | PROTECTED)? CLASS IDENTIFIER (EXTENDS IDENTIFIER)? LBRACE classBody RBRACE;
 
 classBody : (mainMethod | methodDefinition | fieldDefinition)* NEWLINE?;
+
+importStatement : IMPORT ((IDENTIFIER (DOT IDENTIFIER)*) | ARRAY_LIST) SEMICOLON;
 
 mainMethod : PUBLIC STATIC VOID MAIN LPAREN STRING_TOKEN LSQUARE RSQUARE IDENTIFIER RPAREN LBRACE statements RBRACE;
 
@@ -18,7 +20,7 @@ parametersDefinition : (oneParameterDefinition (COMMA oneParameterDefinition)*)?
 
 oneParameterDefinition: (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER;
 
-fieldDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression SEMICOLON)?;
+fieldDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? SEMICOLON;
 
 variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? SEMICOLON;
 
