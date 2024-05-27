@@ -85,7 +85,7 @@ additiveExpression : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpr
 
 multiplicativeExpression : primaryExpression ((MULT | DIV) primaryExpression)*;
 
-primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccessing | IDENTIFIER );
+primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccessing | IDENTIFIER | NULL);
 
 logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
 
