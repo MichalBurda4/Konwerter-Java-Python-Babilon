@@ -11,6 +11,11 @@ Projekt polega na stworzeniu prostego narzędzia do konwersji kodu z języka Jav
 * michalburda@student.agh.edu.pl
 * rbarszczak@student.agh.edu.pl
 
+## Narzędzia z jakich korzystamy:
+- Antlr: http://lab.antlr.org/
+- Język implementacji: Python
+- Java
+
 ## Tokeny:
 ```
 lexer grammar java_babilon;
@@ -307,10 +312,3 @@ ChildClass2.subtractNumbers odejmuje dwie liczby.
 Drzewo składniowe szczegółowo przedstawia każdy element kodu, pokazując strukturę kodu źródłowego. Każdy węzeł reprezentuje składniowy element, taki jak deklaracja klasy, metoda, operacja matematyczna, wyrażenie itp. Drzewo rozgałęzia się, pokazując hierarchię i zagnieżdżenie składniowe elementów programu.
 
 
-
-
-
-## Narzędzia z jakich korzystamy:
-- Antlr: http://lab.antlr.org/
-- Python
-- Java
