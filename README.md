@@ -311,4 +311,6 @@ Drzewo składniowe szczegółowo przedstawia każdy element kodu, pokazując str
 
 
 ## Narzędzia z jakich korzystamy:
-Antlr: http://lab.antlr.org/
+- Antlr: http://lab.antlr.org/
+- Python
+- Java
