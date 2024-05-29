@@ -17,9 +17,8 @@ methodDefinition : (PUBLIC | PRIVATE | PROTECTED) STATIC? (INTEGER_TOKEN | FLOAT
 parameters : (expression (COMMA expression)*)?;
 
 parametersDefinition : (oneParameterDefinition (COMMA oneParameterDefinition)*)?;
-
-oneParameterDefinition: (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER;
-
+listParemeter:  ARRAY_LIST LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB | BYTEB | CHARACTERB | BOOLEANB) GREATER;
+oneParameterDefinition: (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | listParemeter) IDENTIFIER;
 fieldDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? SEMICOLON;
 
 variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? SEMICOLON;
