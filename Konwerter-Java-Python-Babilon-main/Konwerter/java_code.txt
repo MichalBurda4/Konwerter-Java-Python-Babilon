@@ -1,0 +1,17 @@
+class logicalExpressionIf{
+    private void print(){
+        int x;
+        int[] numbers = new int[5];
+        ArrayList<Integer> numbersList = new ArrayList<>();
+        numbersList.add(10);
+
+
+
+    }
+
+}
+
+
+
+
+
