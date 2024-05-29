@@ -46,6 +46,7 @@ statement : (ifStatement
           | continueStatement
           | doWhileStatement
           | printStatement
+          | elseStatement
 );
 
 printStatement : PRINTLN LPAREN expression RPAREN SEMICOLON;
@@ -65,7 +66,9 @@ literal : INTEGER
         | FALSE
         | NULL;
 
-ifStatement : IF LPAREN logicalExpression RPAREN LBRACE statements RBRACE (ELSE LBRACE statements RBRACE)?;
+ifStatement : IF LPAREN logicalExpression RPAREN LBRACE statements RBRACE (elseStatement)?;
+
+elseStatement : ELSE LBRACE statements RBRACE;
 
 forLoopStatement : FOR LPAREN forLoopVariable SEMICOLON oneLogicalExpression SEMICOLON forLoopVariable RPAREN LBRACE statements RBRACE;
 
