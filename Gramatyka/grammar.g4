@@ -87,7 +87,7 @@ additiveExpression : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpr
 
 multiplicativeExpression : primaryExpression ((MULT | DIV) primaryExpression)*;
 
-primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccessing | IDENTIFIER | NULL);
+primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccessing | arrayGet | IDENTIFIER | NULL);
 
 logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
 
@@ -100,3 +100,5 @@ listDefinition : ARRAY_LIST LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB |
 listAddDefinition : IDENTIFIER DOT ADD LPAREN expression RPAREN SEMICOLON;
 
 objectCreating : IDENTIFIER IDENTIFIER (ASSIGN NEW IDENTIFIER LPAREN parameters RPAREN)? SEMICOLON;
+
+arrayGet : IDENTIFIER LSQUARE expression RSQUARE;
