@@ -75,7 +75,7 @@ forLoopVariable : ((INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSI
 
 whileLoopStatement : WHILE LPAREN oneLogicalExpression RPAREN LBRACE statements RBRACE;
 
-assignmentStatement : IDENTIFIER ASSIGN expression SEMICOLON;
+assignmentStatement : (IDENTIFIER | arrayGet ) ASSIGN expression SEMICOLON;
 
 incrementStatement : (IDENTIFIER INCREMENT | INCREMENT IDENTIFIER) SEMICOLON;
 
