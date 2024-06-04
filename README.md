@@ -12,9 +12,9 @@ Projekt polega na stworzeniu prostego narzędzia do konwersji kodu z języka Jav
 * rbarszczak@student.agh.edu.pl
 
 ## Narzędzia z jakich korzystamy:
-- Antlr: http://lab.antlr.org/
+- ANTLR4: http://lab.antlr.org/
 - Język implementacji: Python
-- Java
+
 
 ## Tokeny:
 ```
