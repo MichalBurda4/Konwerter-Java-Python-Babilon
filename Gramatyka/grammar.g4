@@ -76,7 +76,7 @@ forLoopStatement : FOR LPAREN forLoopVariable SEMICOLON oneLogicalExpression SEM
 
 forLoopVariable : ((INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? | IDENTIFIER ASSIGN expression | (IDENTIFIER INCREMENT | INCREMENT IDENTIFIER) | (IDENTIFIER DECREMENT | DECREMENT IDENTIFIER));
 
-whileLoopStatement : WHILE LPAREN oneLogicalExpression RPAREN LBRACE statements RBRACE;
+whileLoopStatement : WHILE LPAREN logicalExpression RPAREN LBRACE statements RBRACE;
 
 assignmentStatement : (IDENTIFIER | arrayGet ) ASSIGN expression SEMICOLON;
 
