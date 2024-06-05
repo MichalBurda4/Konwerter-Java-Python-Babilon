@@ -26,7 +26,7 @@ fieldDefinition : (PUBLIC | PRIVATE) (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN
 
 variableDefinition : (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN) IDENTIFIER (ASSIGN expression)? SEMICOLON;
 
-methodCalling : IDENTIFIER LPAREN parameters RPAREN SEMICOLON;
+methodCalling : (IDENTIFIER DOT)? IDENTIFIER LPAREN parameters RPAREN SEMICOLON;
 
 fieldAccessing : IDENTIFIER (DOT IDENTIFIER)+;
 
@@ -90,7 +90,7 @@ additiveExpression : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpr
 
 multiplicativeExpression : primaryExpression ((MULT | DIV) primaryExpression)*;
 
-primaryExpression : (INTEGER | FLOAT | STRING | methodCalling | fieldAccessing | arrayGet | IDENTIFIER | NULL);
+primaryExpression : ((MINUS)? INTEGER | (MINUS)? FLOAT | STRING | methodCalling | fieldAccessing | arrayGet | IDENTIFIER | NULL);
 
 logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
 
