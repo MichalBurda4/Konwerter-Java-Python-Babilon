@@ -291,10 +291,11 @@ objectCreating : IDENTIFIER IDENTIFIER (ASSIGN NEW IDENTIFIER LPAREN parameters 
 Podane obrazy przedstawiają drzewo składniowe kodu źródłowego w języku Java. Drzewo składniowe, znane również jako drzewo wyprowadzeń (parse tree), reprezentuje strukturalne części programu i sposób, w jaki są one zagnieżdżone w kodzie.
 
 ## Interfejs 🖥️:
-![image](https://github.com/MichalBurda4/Konwerter-Java-Python-Babilon/assets/163707785/db5c19de-41c2-4f57-aa0b-633fb7752b4e)
+![image](https://github.com/MichalBurda4/Konwerter-Java-Python-Babilon/assets/163707785/63345411-20d5-41ad-b40c-0fd8b9a711b3)
+
 
 ## Instrukcja Obsługi:
-Interfejs zbudowany jest z 4 okien.
+Interfejs zbudowany jest z 4 okien. W oknie które jest podpisane Java Code
 
 ### Prolog:
 
