@@ -18,7 +18,7 @@ parameters : (expression (COMMA expression)*)?;
 
 parametersDefinition : (oneParameterDefinition (COMMA oneParameterDefinition)*)?;
 
-listParemeter:  (ARRAY_LIST LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB | BYTEB | CHARACTERB| STRING_TOKEN | BOOLEANB) GREATER) | ((INTEGER_TOKEN | DOUBLE | FLOAT_TOKEN | LONG | SHORT | BYTE | CHARACTER| STRING_TOKEN | BOOLEAN) LSQUARE RSQUARE);
+listParemeter:  (ARRAY_LIST LESS (INTEGERB | DOUBLEB | FLOATB | LONGB | SHORTB | BYTEB | CHARACTERB| STRING_TOKEN | BOOLEANB) GREATER) | ((INTEGER_TOKEN | DOUBLE | FLOAT_TOKEN | LONG | SHORT | BYTE | CHAR | STRING_TOKEN | BOOLEAN) LSQUARE RSQUARE);
 
 oneParameterDefinition: (INTEGER_TOKEN | FLOAT_TOKEN | STRING_TOKEN | listParemeter) IDENTIFIER;
 
@@ -90,7 +90,7 @@ additiveExpression : multiplicativeExpression ((PLUS | MINUS) multiplicativeExpr
 
 multiplicativeExpression : primaryExpression ((MULT | DIV) primaryExpression)*;
 
-primaryExpression : ((MINUS)? INTEGER | (MINUS)? FLOAT | STRING | methodCalling | fieldAccessing | arrayGet | IDENTIFIER | NULL);
+primaryExpression : ((MINUS)? INTEGER | (MINUS)? FLOAT | STRING | methodCalling | fieldAccessing | arrayGet | IDENTIFIER | NULL | LPAREN expression RPAREN);
 
 logicalExpression : (oneLogicalExpression ((AND | OR) oneLogicalExpression)*);
 
