@@ -295,7 +295,22 @@ Podane obrazy przedstawiają drzewo składniowe kodu źródłowego w języku Jav
 
 
 ## Instrukcja Obsługi:
-Interfejs zbudowany jest z 4 okien. W oknie które jest podpisane Java Code
+Podany interfejs jest narzędziem do konwersji kodu z języka Java na Python. Składa się z czterech głównych okien:
+
+* Java Code - Okno w lewym górnym rogu, gdzie wklejamy kod w języku Java.
+* Python Code - Okno w prawym górnym rogu, gdzie pojawia się wygenerowany kod w języku Python po konwersji.
+* Error - Okno w lewym dolnym rogu, gdzie wyświetlane są ewentualne błędy związane z konwersją.
+* Output - Okno w prawym dolnym rogu, gdzie wyświetlany jest wynik działania kodu.
+
+Interfejs posiada przyciski:
+
+* Convert - Rozpoczyna proces konwersji kodu Java na Python.
+* Clear - Czyści zawartość wszystkich okien.
+* Save Python Code - Zapisuje wygenerowany kod Python.
+* Compile and Run - Kompiluje i uruchamia wygenerowany kod Python, a wynik pojawia się w oknie Output.
+
+W przykładowym kodzie w oknie Java Code znajduje się klasa SortingAlgorithms z metodami bubbleSort i insertionSort, które są odpowiedzialne za sortowanie tablicy. Po konwersji przyciskiem Convert, w oknie Python Code pojawia się odpowiednik tej klasy i metod w języku Python.
+
 
 ### Prolog:
 
