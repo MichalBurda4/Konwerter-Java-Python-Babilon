@@ -293,7 +293,8 @@ Podane obrazy przedstawiają drzewo składniowe kodu źródłowego w języku Jav
 ## Interfejs 🖥️:
 ![image](https://github.com/MichalBurda4/Konwerter-Java-Python-Babilon/assets/163707785/db5c19de-41c2-4f57-aa0b-633fb7752b4e)
 
-
+## Instrukcja Obsługi:
+Interfejs zbudowany jest z 4 okien.
 
 ### Prolog:
 
