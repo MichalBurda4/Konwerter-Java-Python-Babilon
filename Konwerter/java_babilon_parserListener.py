@@ -18,6 +18,10 @@ class java_babilon_parserListener(ParseTreeListener):
         self.fields = []
         self.statements = []
         self.expressions = []
+        self.classes = []
+        self.methods = []
+        self.instances = []
+        self.variable_types = {}
         self.indentation_level = 0
         self.indentation_level_main = 0
 
@@ -54,9 +58,10 @@ class java_babilon_parserListener(ParseTreeListener):
 
     # Enter a parse tree produced by java_babilon_parser#classDeclaration.
     def enterClassDeclaration(self, ctx: java_babilon_parser.ClassDeclarationContext):
+        self.classes.append(ctx.IDENTIFIER()[0].getText())
         self.fields = []
         if ctx.EXTENDS():
-            self.python_code += f"\nclass({ctx.IDENTIFIER()[1].getText()}): \n"
+            self.python_code += f"\nclass {ctx.IDENTIFIER()[0].getText()}({ctx.IDENTIFIER()[1].getText()}): \n"
         else:
             self.python_code += "\nclass " + ctx.IDENTIFIER()[0].getText() + ":\n"
         self.increase_indent()
@@ -103,6 +108,9 @@ class java_babilon_parserListener(ParseTreeListener):
 
     # Enter a parse tree produced by java_babilon_parser#methodDefinition.
     def enterMethodDefinition(self, ctx: java_babilon_parser.MethodDefinitionContext):
+        method_name = ctx.IDENTIFIER().getText()
+        self.methods.append(method_name)
+
         if ctx.STATIC():
             self.python_code += "\n" + self.get_indent() + "@staticmethod"
         if ctx.PRIVATE():
@@ -176,6 +184,10 @@ class java_babilon_parserListener(ParseTreeListener):
 
     # Enter a parse tree produced by java_babilon_parser#variableDefinition.
     def enterVariableDefinition(self, ctx: java_babilon_parser.VariableDefinitionContext):
+        variable_name = ctx.IDENTIFIER().getText()
+        variable_type = ctx.getChild(0).getText()
+        self.variable_types[variable_name] = variable_type
+
         if self.ifMainFunc:
             variable_name = ctx.IDENTIFIER().getText()
             expression_ctx = ctx.expression()
@@ -221,6 +233,7 @@ class java_babilon_parserListener(ParseTreeListener):
 
     # Enter a parse tree produced by java_babilon_parser#methodCalling.
     def enterMethodCalling(self, ctx: java_babilon_parser.MethodCallingContext):
+
         if self.ifMainFunc:
             parent_class_ctx = ctx
             parent_class_body_ctx = ctx
@@ -231,13 +244,20 @@ class java_babilon_parserListener(ParseTreeListener):
 
             if parent_class_ctx and ctx.IDENTIFIER():
                 method_name = ctx.IDENTIFIER(0).getText()
+                if ctx.IDENTIFIER(1):
+                    method_name = ctx.IDENTIFIER(1).getText()
                 method_static = self.is_static_method(parent_class_body_ctx, method_name)
                 if method_static:
                     className = parent_class_ctx.IDENTIFIER()[0].getText()
+                    if method_name not in self.methods:
+                        raise SemanticError(f"Błąd: Metoda '{method_name}' nie została zadeklarowana.")
                     self.mainFunc += self.get_indent_main() + f"{className}." + method_name + "("
                 else:
                     instance_name = ctx.IDENTIFIER(0).getText()
-                    method_name = ctx.IDENTIFIER(1).getText()
+                    if instance_name not in self.instances:
+                        raise SemanticError(f"Błąd: Instancja '{instance_name}' nie została stworzona.")
+                    if method_name not in self.methods:
+                        raise SemanticError(f"Błąd: Metoda '{method_name}' nie została zadeklarowana.")
                     self.mainFunc += self.get_indent_main() + f"{instance_name}." + method_name + "("
         else:
             parent_method_ctx = ctx
@@ -245,6 +265,9 @@ class java_babilon_parserListener(ParseTreeListener):
                 parent_method_ctx = parent_method_ctx.parentCtx
             if parent_method_ctx and parent_method_ctx.STATIC():
                 if parent_method_ctx.parentCtx.parentCtx.IDENTIFIER(0):
+                    method_name = ctx.IDENTIFIER(0).getText()
+                    if method_name not in self.methods:
+                        raise SemanticError(f"Błąd: Metoda '{method_name}' nie została zadeklarowana.")
                     className = parent_method_ctx.parentCtx.parentCtx.IDENTIFIER(0).getText()
                     self.python_code += self.get_indent() + f"{className}." + ctx.IDENTIFIER(0).getText() + "("
             else:
@@ -500,6 +523,10 @@ class java_babilon_parserListener(ParseTreeListener):
 
     # Enter a parse tree produced by java_babilon_parser#assignmentStatement.
     def enterAssignmentStatement(self, ctx: java_babilon_parser.AssignmentStatementContext):
+        variable_name = ctx.getChild(0).getText()
+        if variable_name not in self.variable_types and "[" not in variable_name:
+            raise SemanticError(f"Błąd: Zmienna '{variable_name}' nie została zadeklarowana.")
+
         if self.ifMainFunc:
             if ctx.IDENTIFIER():
                 variable_name = ctx.IDENTIFIER().getText()
@@ -703,6 +730,11 @@ class java_babilon_parserListener(ParseTreeListener):
 
     # Enter a parse tree produced by java_babilon_parser#objectCreating.
     def enterObjectCreating(self, ctx: java_babilon_parser.ObjectCreatingContext):
+        if ctx.IDENTIFIER(0).getText() not in self.classes:
+            raise SemanticError(f"Błąd: klasa '{ctx.IDENTIFIER(0).getText()}' nie została zadeklarowana.")
+
+        self.instances.append(ctx.IDENTIFIER(1).getText())
+
         if self.ifMainFunc:
             variable_name = ctx.IDENTIFIER(1).getText()
             class_name = ctx.IDENTIFIER(0).getText()
@@ -726,5 +758,5 @@ class java_babilon_parserListener(ParseTreeListener):
     def exitArrayGet(self, ctx: java_babilon_parser.ArrayGetContext):
         pass
 
-# todo DO ZROBIENIA
-#     w metodzie main usunac self z wywolywania metod
+class SemanticError(Exception):
+    pass
